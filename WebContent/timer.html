@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Toxic Timer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/timer.css" rel="stylesheet">
+	<link href="css/editor.css" rel="stylesheet">
+	<script src="jquery/jquery-2.1.0.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/util.js"></script>
+	<script src="js/notification.js"></script>
+	<script src="js/io.js"></script>
+	<script src="js/converter.js"></script>
+	<script src="js/request.js"></script>
+	<script src="js/timer.js"></script>
+	<script src="js/timerUI.js"></script>
+	<script src="js/editor.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">ToxicTimer</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="timer.html">Timer</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div id="notificationDiv"></div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Run settings</h3>
+					</div>
+					<div class="panel-body">
+						<button type="button" class="btn btn-default pull-right" id="loadFileButton">
+							<span class="glyphicon glyphicon-file"></span>Load
+						</button>
+						<input type="file" id="fileInput" style="visibility: hidden">
+						<form role="form">
+							<div class="form-group">
+								<label for="gameSelect">Select Game</label>
+								<select class="form-control" id="gameSelect"></select>
+							</div>
+							<div class="form-group">
+								<label for="runSelect">Select Run</label>
+								<select class="form-control" id="runSelect"></select>
+							</div>
+							<hr>
+							<div class="form-group">
+								<label for="delayInput">Start delay</label>
+								<input type="text" class="form-control" id="delayInput">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-8">
+				<div class="panel panel-default">
+					<div class="panel-heading" id="runName">Timer</div>
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Best</th>
+								<th>Live</th>
+								<th>
+									+/-
+									<button type="button" class="btn btn-success toggleEdit" data-toggle="button" id="editorButton">
+										<span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit
+									</button>
+								</th>
+							</tr>
+						</thead>
+						<tbody id="splits">
+							<tr id="split0">
+								<td id="name0">New Split</td>
+								<td id="best0">???</td>
+								<td id="live0">-</td>
+								<td id="difference0">-</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="panel-footer">
+						<button type="button" class="btn btn-default btn-md" id="startSplitButton">
+							<span id="startSplitIcon" class="glyphicon glyphicon-play"></span>
+							<span id="startSplitText">Start</span>
+						</button>
+						<button type="button" class="btn btn-default btn-md" id="stopResumeButton">
+							<span id="stopResumeIcon" class="glyphicon glyphicon-stop"></span>
+							<span id="stopResumeText">Stop</span>
+						</button>
+						<button type="button" class="btn btn-default btn-md" id="skipButton">
+							<span id="skipIcon" class="glyphicon glyphicon-step-forward"></span>
+							<span id="skipText">Skip</span>
+						</button>
+						<button type="button" class="btn btn-default btn-md" id="undoButton">
+							<span id="undoIcon" class="glyphicon glyphicon-step-backward"></span>
+							<span id="undoText">Undo Split</span>
+						</button>
+						<button type="button" class="btn btn-default btn-md" id="resetButton">
+							<span id="resetIcon" class="glyphicon glyphicon-refresh"></span>
+							<span id="resetText">Reset</span>
+						</button>
+						<span id="timeDisplay" class="clock pull-right">00:00.000</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/startup/timerStartup.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+.deleteSplit:hover {
+	color: #d9534f
+}
+.insertSplit:hover {
+	color: #398439
+}
+.toggleEdit {
+	float: right;
+	padding: 1px 3px;
+	position: relative;
+	top: -8px;
+	right: -8px;
+}
