@@ -27,6 +27,9 @@ public abstract class BaseServlet extends HttpServlet {
 	protected int responseCode = HttpServletResponse.SC_OK;
 
 	private String validNumber = "0123456789";
+	private String validName = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private String validSplits = "0123456789;-";
+	private String[] validStatus = {"hold", "ready", "finished"};
 
 	public BaseServlet() {
 		super();
@@ -135,6 +138,25 @@ public abstract class BaseServlet extends HttpServlet {
 		}
 		return returnValue;
 	}
+	
+	/**
+	 *  Validates the given string by comparing it to the allowed strings.
+	 * @param pInput The string to validate
+	 * @param pValid The array containing the valid strings
+	 * @return Whether the string is valid or not.
+	 */
+	protected boolean Validate(String pInput, String[] pValid) {
+		if (pInput != null) {
+			if (!pInput.isEmpty()) {
+				for (String string : pValid) {
+					if (string.equals(pInput)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Validates if the given string is a number.
@@ -145,6 +167,33 @@ public abstract class BaseServlet extends HttpServlet {
 	 */
 	protected boolean ValidateNumber(String pNumber) {
 		return this.Validate(pNumber, validNumber);
+	}
+	
+	/**
+	 * Validates if the given string is a valid name string
+	 * @param pName The string to validate
+	 * @return Whether the string is a valid name string
+	 */
+	protected boolean ValidateName(String pName) {
+		return this.Validate(pName, validName);
+	}
+	
+	/**
+	 * Validates if the given string is a valid split string
+	 * @param pNumber The string to validate
+	 * @return Whether the string is a valid split string
+	 */
+	protected boolean ValidateSplits(String pSplits) {
+		return this.Validate(pSplits, validSplits);
+	}
+	
+	/**
+	 * Validates if the given string is a valid status string
+	 * @param pStatus The string to validate
+	 * @return Whether the string is a valid status string
+	 */
+	protected boolean ValidateStatus(String pStatus) {
+		return this.Validate(pStatus, validStatus);
 	}
 
 }

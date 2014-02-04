@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.jojo.toxictimer.api.exceptions.RunNotFoundExceptions;
+import org.jojo.toxictimer.api.exceptions.RunNotFoundException;
 
 public class Run {
 	
@@ -27,10 +27,10 @@ public class Run {
 	 * @param pSqlConnection The sqlConnection to use.
 	 * @return The run associated to the id.
 	 * @throws SQLException
-	 * @throws RunNotFoundExceptions If there is no run with the given id.
+	 * @throws RunNotFoundException If there is no run with the given id.
 	 */
 	public static Run GetRun(int pRunId, Connection pSqlConnection)
-			throws SQLException, RunNotFoundExceptions {
+			throws SQLException, RunNotFoundException {
 		Run run = null;
 		Statement runStatement = pSqlConnection.createStatement();
 		ResultSet runResult = runStatement
@@ -41,7 +41,7 @@ public class Run {
 			run = new Run(pRunId, runResult.getString("name"), Split.GetSplits(
 					pRunId, pSqlConnection));
 		} else {
-			throw new RunNotFoundExceptions(pRunId);
+			throw new RunNotFoundException(pRunId);
 		}
 		return run;
 	}

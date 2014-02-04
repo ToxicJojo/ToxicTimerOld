@@ -11,7 +11,7 @@ public class Split {
 	private String name;
 
 	public Split(String pName) {
-		name = pName;
+		this.name = pName;
 	}
 
 	/**
@@ -33,6 +33,14 @@ public class Split {
 			splits.add(new Split(runResult.getString("name")));
 		}
 		
+		return splits;
+	}
+	
+	public static ArrayList<Long> ParseSplits(String pSplits) {
+		ArrayList<Long> splits = new ArrayList<Long>();
+		for (String split : pSplits.split(";")) {
+			splits.add(Long.parseLong(split));
+		}
 		return splits;
 	}
 	

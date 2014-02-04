@@ -9,35 +9,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jojo.toxictimer.api.BaseServlet;
-import org.jojo.toxictimer.api.Game;
-import org.jojo.toxictimer.api.exceptions.GameNotFoundException;
-import org.jojo.toxictimer.api.exceptions.RunNotFoundException;
+import org.jojo.toxictimer.api.Race;
 
-@WebServlet("/get/GameList")
-public class GetGameList extends BaseServlet {
+@WebServlet("/get/RaceCount")
+public class GetRaceCount extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
-	public GetGameList() {
+	public GetRaceCount() {
 		super();
-		servletName = "get/GameList";
+		servletName = "get/RaceCount";
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		if (this.ConnectToDatabase()) {
 			if (this.SetUpWriter(response, request)) {
-				try {		
-					this.WriteResponse(Game.GetGameList(sqlConnection));
+				try {
+					this.WriteResponse(Race.GetRaceCount(sqlConnection));
 				} catch (SQLException e) {
 					responseCode = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-					System.err.println("SQL Error in (" + servletName + ")");
-					e.printStackTrace();
-				} catch (RunNotFoundException e) {
-					responseCode = HttpServletResponse.SC_NOT_FOUND;
-					e.printStackTrace();
-				} catch (GameNotFoundException e) {
-					responseCode = HttpServletResponse.SC_NOT_FOUND;
-					e.printStackTrace();
+					System.err.println("SQL Error (" + servletName + ")");
 				}
 			}
 			this.EndDatabaseConnection();

@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.jojo.toxictimer.api.exceptions.GameNotFoundException;
-import org.jojo.toxictimer.api.exceptions.RunNotFoundExceptions;
+import org.jojo.toxictimer.api.exceptions.RunNotFoundException;
 
 public class Game {
 
@@ -30,11 +30,11 @@ public class Game {
 	 * @param pSqlConnection The sqlConnection to use.
 	 * @return 
 	 * @throws SQLException
-	 * @throws RunNotFoundExceptions
+	 * @throws RunNotFoundException
 	 * @throws GameNotFoundException Is thrown if there is no game with the given id.
 	 */
 	public static Game GetGame(int pGameId, Connection pSqlConnection)
-			throws SQLException, RunNotFoundExceptions, GameNotFoundException {
+			throws SQLException, RunNotFoundException, GameNotFoundException {
 		Game game = null;
 
 		Statement gameStatement = pSqlConnection.createStatement();
@@ -67,11 +67,11 @@ public class Game {
 	 * @param pSqlConnection The sqlConnection to use.
 	 * @return	An ArrayList containing all the games in the database.
 	 * @throws SQLException
-	 * @throws RunNotFoundExceptions
+	 * @throws RunNotFoundException
 	 * @throws GameNotFoundException
 	 */
 	public static ArrayList<Game> GetGameList(Connection pSqlConnection)
-			throws SQLException, RunNotFoundExceptions, GameNotFoundException {
+			throws SQLException, RunNotFoundException, GameNotFoundException {
 		ArrayList<Game> gameList = new ArrayList<Game>();
 
 		Statement gamesStatement = pSqlConnection.createStatement();
