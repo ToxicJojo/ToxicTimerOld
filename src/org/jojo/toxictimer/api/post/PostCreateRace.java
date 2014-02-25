@@ -42,9 +42,12 @@ public class PostCreateRace extends BaseServlet {
 
 							String raceId = Race.CreateRace(gameId, runId,
 									sqlConnection);
+							
+							String code = Runner.JoinRace(playerName,
+									Integer.parseInt(raceId), sqlConnection);
 
-							this.WriteResponse(Runner.JoinRace(playerName,
-									Integer.parseInt(raceId), sqlConnection));
+							this.WriteResponse(Runner.GetRunner(code,
+									sqlConnection).getId() + ";" + code + ";" + raceId);
 						} else {
 							this.WriteResponse("NameTaken");
 						}

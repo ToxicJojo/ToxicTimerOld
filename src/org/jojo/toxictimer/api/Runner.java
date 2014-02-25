@@ -26,6 +26,10 @@ public class Runner {
 	public String getStatus() {
 		return status;
 	}
+	
+	public int getId() {
+		return id;
+	}
 
 	/**
 	 * Return the runner with the given id.
@@ -137,7 +141,7 @@ public class Runner {
 	 * @throws RaceNotFoundExcpetion
 	 *             Is thrown if there is no race with the given id.
 	 */
-	public static int JoinRace(String pName, int pRaceId,
+	public static String JoinRace(String pName, int pRaceId,
 			Connection pSqlConnection) throws SQLException,
 			RunnerNotFoundException, RaceNotFoundExcpetion {
 		int code = (int) (pName.hashCode() * (Math.random()));
@@ -162,7 +166,7 @@ public class Runner {
 						+ "','"
 						+ splits + "','hold')");
 
-		return code;
+		return String.valueOf(code);
 	}
 
 	/**

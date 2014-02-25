@@ -19,7 +19,6 @@ import com.google.gson.Gson;
 public abstract class BaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected String callBack;
 	protected String servletName;
 
 	protected Connection sqlConnection;
@@ -91,7 +90,6 @@ public abstract class BaseServlet extends HttpServlet {
 			HttpServletRequest pRequest) {
 		try {
 			pResponse.setContentType("application/json; charset=utf-8");
-			callBack = pRequest.getParameter("callback");
 			out = pResponse.getWriter();
 			return true;
 		} catch (IOException e) {
@@ -110,7 +108,7 @@ public abstract class BaseServlet extends HttpServlet {
 	protected void WriteResponse(Object pObject) {
 		Gson gson = new Gson();
 
-		out.println(callBack + "(" + gson.toJson(pObject) + ")");
+		out.println(gson.toJson(pObject));
 		out.close();
 	}
 

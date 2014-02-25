@@ -45,6 +45,7 @@ public class PostSplits extends BaseServlet {
 										+ splits
 										+ "' WHERE code = "
 										+ runnerCode);
+						responseCode = HttpServletResponse.SC_OK;
 					} else {
 						responseCode = HttpServletResponse.SC_BAD_REQUEST;
 					}

@@ -43,10 +43,10 @@ public class GetRace extends BaseServlet {
 					System.err.println("NumberFormat Error (" + servletName + ")");
 					e.printStackTrace();
 				} catch (RunnerNotFoundException e) {
-					responseCode = HttpServletResponse.SC_NO_CONTENT;
+					responseCode = HttpServletResponse.SC_NOT_FOUND;
 					e.printStackTrace();
 				} catch (RaceNotFoundExcpetion e) {
-					responseCode = HttpServletResponse.SC_NO_CONTENT;
+					responseCode = HttpServletResponse.SC_NOT_FOUND;
 					e.printStackTrace();
 				}
 			}

@@ -17,7 +17,7 @@
 	<script src="js/converter.js"></script>
 	<script src="js/request.js"></script>
 	<script src="js/timer.js"></script>
-	<script src="js/timerUI.js"></script>
+	<script src="js/UI/timerUI.js"></script>
 	<script src="js/editor.js"></script>
 </head>
 
@@ -31,6 +31,14 @@
 				<ul class="nav navbar-nav">
 					<li class="active">
 						<a href="timer.html">Timer</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="races.html">
+							Races
+							<span class="badge" id="raceCount">0</span>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -118,6 +126,8 @@
 			</div>
 		</div>
 	</div>
+
+	<script src="js/startup/startup.js"></script>
 	<script src="js/startup/timerStartup.js"></script>
 </body>
 

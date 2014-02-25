@@ -34,7 +34,11 @@ public class PostJoinRace extends BaseServlet {
 							&& this.ValidateName(playerName)) {
 
 						if (Runner.NameAvailable(playerName, sqlConnection)) {
-							this.WriteResponse( Runner.JoinRace(playerName,Integer.parseInt(raceId), sqlConnection));
+							String code = Runner.JoinRace(playerName,
+									Integer.parseInt(raceId), sqlConnection);
+							this.WriteResponse(Runner.GetRunner(code,
+									sqlConnection).getId()
+									+ ";" + code);
 						} else {
 							this.WriteResponse("NameTaken");
 						}
